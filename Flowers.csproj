@@ -38,8 +38,17 @@
     <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -61,6 +70,57 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Model\FlowersDataBase.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FlowersDataBase.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FlowersDataBase.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FlowersDataBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FlowersDataBase.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FlowersDataBase.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Order.cs">
+      <DependentUpon>FlowersDataBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OrderPickupPoint.cs">
+      <DependentUpon>FlowersDataBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OrderProduct.cs">
+      <DependentUpon>FlowersDataBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OrderStatus.cs">
+      <DependentUpon>FlowersDataBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Product.cs">
+      <DependentUpon>FlowersDataBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ProductCategory.cs">
+      <DependentUpon>FlowersDataBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ProductManufacturer.cs">
+      <DependentUpon>FlowersDataBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ProductMeasure.cs">
+      <DependentUpon>FlowersDataBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ProductName.cs">
+      <DependentUpon>FlowersDataBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ProductSupplier.cs">
+      <DependentUpon>FlowersDataBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Role.cs">
+      <DependentUpon>FlowersDataBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\User.cs">
+      <DependentUpon>FlowersDataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Views\Pages\AuthorizationPage.xaml.cs">
       <DependentUpon>AuthorizationPage.xaml</DependentUpon>
@@ -106,6 +166,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="Model\FlowersDataBase.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FlowersDataBase.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\FlowersDataBase.edmx.diagram">
+      <DependentUpon>FlowersDataBase.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -124,6 +192,20 @@
     <Resource Include="Resources\Images\picture.png" />
     <Resource Include="Resources\Images\showPassword.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\FlowersDataBase.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FlowersDataBase.Context.cs</LastGenOutput>
+      <DependentUpon>FlowersDataBase.edmx</DependentUpon>
+    </Content>
+    <Content Include="Model\FlowersDataBase.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FlowersDataBase.edmx</DependentUpon>
+      <LastGenOutput>FlowersDataBase.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
