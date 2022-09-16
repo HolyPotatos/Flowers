@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Flowers.Views.Pages
+namespace Flowers.Views.Pages.AuthorizationPages
 {
     public partial class RegistrationPage : Page
     {

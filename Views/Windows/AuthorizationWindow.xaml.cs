@@ -1,4 +1,4 @@
-﻿using Flowers.Views.Pages;
+﻿using Flowers.Views.Pages.AuthorizationPages;
 using System.Windows;
 using System.Windows.Input;
 

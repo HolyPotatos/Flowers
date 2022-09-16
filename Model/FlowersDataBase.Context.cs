@@ -9,11 +9,10 @@
 
 namespace Flowers
 {
-    using System;
+    using Flowers.Model;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using Flowers.Model;
-    
+
     public partial class TradeEntities : DbContext
     {
         public static TradeEntities Context;

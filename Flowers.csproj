@@ -71,6 +71,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Model\Classes\CheckLoginClass.cs" />
+    <Compile Include="Model\Classes\CheckUserRoleClass.cs" />
+    <Compile Include="Model\Classes\ImageConverter.cs" />
     <Compile Include="Model\FlowersDataBase.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -122,28 +125,42 @@
     <Compile Include="Model\User.cs">
       <DependentUpon>FlowersDataBase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Views\Pages\AuthorizationPage.xaml.cs">
+    <Compile Include="Views\Pages\AuthorizationPages\AuthorizationPage.xaml.cs">
       <DependentUpon>AuthorizationPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Pages\RegistrationPage.xaml.cs">
+    <Compile Include="Views\Pages\AuthorizationPages\RegistrationPage.xaml.cs">
       <DependentUpon>RegistrationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\GuestPages\MainGuestPage.xaml.cs">
+      <DependentUpon>MainGuestPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Windows\AuthorizationWindow.xaml.cs">
       <DependentUpon>AuthorizationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\BaseWindow.xaml.cs">
+      <DependentUpon>BaseWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Resources\ElementsStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Pages\AuthorizationPage.xaml">
+    <Page Include="Views\Pages\AuthorizationPages\AuthorizationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Pages\RegistrationPage.xaml">
+    <Page Include="Views\Pages\AuthorizationPages\RegistrationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\GuestPages\MainGuestPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Windows\AuthorizationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Windows\BaseWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -206,6 +223,12 @@
       <DependentUpon>FlowersDataBase.edmx</DependentUpon>
       <LastGenOutput>FlowersDataBase.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\Images\logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Pages\AdminPages\" />
+    <Folder Include="Views\Pages\ManagerPages\" />
+    <Folder Include="Views\Pages\UserPages\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

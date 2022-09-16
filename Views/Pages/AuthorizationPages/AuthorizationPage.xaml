@@ -1,9 +1,9 @@
-﻿<Page x:Class="Flowers.Views.Pages.AuthorizationPage"
+﻿<Page x:Class="Flowers.Views.Pages.AuthorizationPages.AuthorizationPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"  mc:Ignorable="d" 
-      xmlns:l="clr-namespace:Flowers.Views.Pages"
+      xmlns:l="clr-namespace:Flowers.Views.Pages.AuthorizationPages"
       d:DesignHeight="460" d:DesignWidth="300"
       WindowTitle="Авторизация">
     <Grid>
@@ -36,7 +36,7 @@
         <UniformGrid Grid.Row="2" Rows="3">
             <Button Content="Нет аккаунта? Регистрация." Width="185" Height="18" Style="{StaticResource TextButtonStyle}" Click="RegistrationButtonClick" Margin="58,4,58,0" VerticalAlignment="Top"/>
             <TextBlock Style="{StaticResource MainTextBlockStyle}" Text="или" HorizontalAlignment="Center" FontSize="12" VerticalAlignment="Center"/>
-            <Button Content="Войти как гость." Width="110" Height="18" Style="{StaticResource TextButtonStyle}" VerticalAlignment="Top"/>
+            <Button Content="Войти как гость." Click="GuestEnterClick" Width="110" Height="18" Style="{StaticResource TextButtonStyle}" VerticalAlignment="Top"/>
         </UniformGrid>
     </Grid>
 </Page>
