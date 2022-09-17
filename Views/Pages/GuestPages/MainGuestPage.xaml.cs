@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Flowers.Model;
+using Flowers.Views.Windows;
 
 namespace Flowers.Views.Pages.GuestPages
 {
@@ -23,31 +24,31 @@ namespace Flowers.Views.Pages.GuestPages
     {
         private void FilterProduct(string TextFilter, string ManufFilter, string CostFilter)
         {
-            dgrid.ItemsSource = null;
+            ProductDataGrid.ItemsSource = null;
             if (CostFilter == "Сначала недорогие")
             {
                 if (string.IsNullOrEmpty(TextFilter))
                 {
                     if (ManufFilter == "Все производители")
                     {
-                        dgrid.ItemsSource = TradeEntities.GetContext().Product.ToList().OrderBy(b => b.ProductCost);
+                        ProductDataGrid.ItemsSource = TradeEntities.GetContext().Product.ToList().OrderBy(b => b.ProductCost);
                     }
                     else
                     {
-                        dgrid.ItemsSource = TradeEntities.GetContext().Product.Where(b => b.ProductManufacturer1.ProductManufacturer1 == ManufFilter).ToList().OrderBy(b => b.ProductCost);
+                        ProductDataGrid.ItemsSource = TradeEntities.GetContext().Product.Where(b => b.ProductManufacturer1.ProductManufacturer1 == ManufFilter).ToList().OrderBy(b => b.ProductCost);
                     }
                 }
                 else
                 {
                     if (ManufFilter == "Все производители")
                     {
-                        dgrid.ItemsSource = TradeEntities.GetContext().Product.Where(b => b.ProductName1.ProductName1.Contains(TextFilter) ||
+                        ProductDataGrid.ItemsSource = TradeEntities.GetContext().Product.Where(b => b.ProductName1.ProductName1.Contains(TextFilter) ||
                             b.ProductDescription.Contains(TextFilter) ||
                             b.ProductManufacturer1.ProductManufacturer1.Contains(TextFilter)).ToList().OrderBy(b => b.ProductCost);
                     }
                     else
                     {
-                        dgrid.ItemsSource = TradeEntities.GetContext().Product.Where(b => b.ProductManufacturer1.ProductManufacturer1 == ManufFilter && 
+                        ProductDataGrid.ItemsSource = TradeEntities.GetContext().Product.Where(b => b.ProductManufacturer1.ProductManufacturer1 == ManufFilter && 
                             (b.ProductName1.ProductName1.Contains(TextFilter) || 
                             b.ProductDescription.Contains(TextFilter) || 
                             b.ProductManufacturer1.ProductManufacturer1.Contains(TextFilter))).ToList().OrderBy(b => b.ProductCost);
@@ -60,31 +61,31 @@ namespace Flowers.Views.Pages.GuestPages
                 {
                     if (ManufFilter == "Все производители")
                     {
-                        dgrid.ItemsSource = TradeEntities.GetContext().Product.ToList().OrderByDescending(b => b.ProductCost);
+                        ProductDataGrid.ItemsSource = TradeEntities.GetContext().Product.ToList().OrderByDescending(b => b.ProductCost);
                     }
                     else
                     {
-                        dgrid.ItemsSource = TradeEntities.GetContext().Product.Where(b => b.ProductManufacturer1.ProductManufacturer1 == ManufFilter).ToList().OrderByDescending(b => b.ProductCost);
+                        ProductDataGrid.ItemsSource = TradeEntities.GetContext().Product.Where(b => b.ProductManufacturer1.ProductManufacturer1 == ManufFilter).ToList().OrderByDescending(b => b.ProductCost);
                     }
                 }
                 else
                 {
                     if (ManufFilter == "Все производители")
                     {
-                        dgrid.ItemsSource = TradeEntities.GetContext().Product.Where(b => b.ProductName1.ProductName1.Contains(TextFilter) ||
+                        ProductDataGrid.ItemsSource = TradeEntities.GetContext().Product.Where(b => b.ProductName1.ProductName1.Contains(TextFilter) ||
                             b.ProductDescription.Contains(TextFilter) ||
                             b.ProductManufacturer1.ProductManufacturer1.Contains(TextFilter)).ToList().OrderByDescending(b => b.ProductCost);
                     }
                     else
                     {
-                        dgrid.ItemsSource = TradeEntities.GetContext().Product.Where(b => b.ProductManufacturer1.ProductManufacturer1 == ManufFilter &&
+                        ProductDataGrid.ItemsSource = TradeEntities.GetContext().Product.Where(b => b.ProductManufacturer1.ProductManufacturer1 == ManufFilter &&
                             (b.ProductName1.ProductName1.Contains(TextFilter) ||
                             b.ProductDescription.Contains(TextFilter) ||
                             b.ProductManufacturer1.ProductManufacturer1.Contains(TextFilter))).ToList().OrderByDescending(b => b.ProductCost);
                     }
                 }
             }
-            FilterCount.Text = dgrid.Items.Count + " из " + TradeEntities.GetContext().Product.Count();
+            FilterCount.Text = ProductDataGrid.Items.Count + " из " + TradeEntities.GetContext().Product.Count();
         }
         public MainGuestPage()
         {
@@ -101,7 +102,7 @@ namespace Flowers.Views.Pages.GuestPages
             FilterManufactured.SelectedIndex = 0;
             FilterPrice.SelectedIndex = 0;
             FilterCount.Text = TradeEntities.GetContext().Product.Count() + " из " + TradeEntities.GetContext().Product.Count();
-            dgrid.ItemsSource = TradeEntities.GetContext().Product.ToList().OrderBy(n => n.ProductCost);
+            ProductDataGrid.ItemsSource = TradeEntities.GetContext().Product.ToList().OrderBy(n => n.ProductCost);
         }
 
 
@@ -117,5 +118,16 @@ namespace Flowers.Views.Pages.GuestPages
             }
         }
 
+        private void CartAddButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Для покупки товаров необходимо авторизоваться. \nСделать это сейчас?", "Уведомление",
+                    MessageBoxButton.YesNo, MessageBoxImage.Asterisk) == MessageBoxResult.Yes)
+            {
+                var AuthWindow = new AuthorizationWindow();
+                var window = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
+                AuthWindow.Show();
+                window.Close();
+            }
+        }
     }
 }

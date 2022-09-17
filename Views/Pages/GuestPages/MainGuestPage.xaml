@@ -16,7 +16,7 @@
             <StackPanel Orientation="Horizontal">
                 <Grid VerticalAlignment="Center">
                     <TextBox Style="{StaticResource MainTextBoxStyle}" Width="250" TextChanged="FilterProductTextChanged" HorizontalAlignment="Left" x:Name="FilterAll"/>
-                    <TextBlock Style="{StaticResource SearchTextBlockStyle}" Width="220" Margin="8,5,0,5">
+                    <TextBlock Style="{StaticResource SearchTextBlockStyle}" HorizontalAlignment="Left" Width="220" Margin="2,5,0,5">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Resources/Images/search.png" Height="20"/>
                             <TextBlock Text="Поиск"/>
@@ -29,8 +29,8 @@
             </StackPanel>
         </GroupBox>
         <GroupBox Grid.Row="1" Header="Список товаров" FontFamily="Comic Sans MS">
-            <DataGrid AutoGenerateColumns="False" CanUserAddRows="False" ColumnHeaderHeight="0" x:Name="dgrid" ColumnWidth="*" HorizontalContentAlignment="Stretch" VerticalAlignment="Stretch" SelectionMode="Single"
-                      CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False" ScrollViewer.CanContentScroll="False">
+            <DataGrid AutoGenerateColumns="False" CanUserAddRows="False" ColumnHeaderHeight="0" x:Name="ProductDataGrid" ColumnWidth="*" HorizontalContentAlignment="Stretch" VerticalAlignment="Stretch" SelectionMode="Single"
+                      CanUserDeleteRows="False" IsReadOnly="True" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False" ScrollViewer.CanContentScroll="False">
                 <DataGrid.Columns>
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
@@ -73,5 +73,6 @@
                 </DataGrid.Columns>
             </DataGrid>
         </GroupBox>
+        <Button Grid.Row="2" Margin="10" Content="Добавить в корзину" Width="200" HorizontalAlignment="Right" Style="{StaticResource AddCartButtonStyle}" Click="CartAddButtonClick"/>
     </Grid>
 </Page>
