@@ -1,8 +1,8 @@
-﻿using System.Linq;
+﻿using Flowers.Model.Classes;
+using Flowers.Views.Windows;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using Flowers.Model.Classes;
-using Flowers.Views.Windows;
 
 namespace Flowers.Views.Pages.AuthorizationPages
 {
