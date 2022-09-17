@@ -73,7 +73,6 @@
     </Compile>
     <Compile Include="Model\Classes\CheckLoginClass.cs" />
     <Compile Include="Model\Classes\CheckUserRoleClass.cs" />
-    <Compile Include="Model\Classes\ImageConverter.cs" />
     <Compile Include="Model\FlowersDataBase.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -223,6 +222,7 @@
       <DependentUpon>FlowersDataBase.edmx</DependentUpon>
       <LastGenOutput>FlowersDataBase.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\Images\search.png" />
     <Resource Include="Resources\Images\logout.png" />
   </ItemGroup>
   <ItemGroup>

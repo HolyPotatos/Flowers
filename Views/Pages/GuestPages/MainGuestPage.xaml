@@ -4,14 +4,31 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" 
       xmlns:l="clr-namespace:Flowers.Views.Pages.GuestPages"
-      d:DesignHeight="410" d:DesignWidth="800"
+      d:DesignHeight="510" d:DesignWidth="800"
       WindowTitle="Цветы: гость">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
-        <GroupBox Header="Список товаров" FontFamily="Comic Sans MS">
+        <GroupBox Header="Фильтр" FontFamily="Comic Sans MS">
+            <StackPanel Orientation="Horizontal">
+                <Grid VerticalAlignment="Center">
+                    <TextBox Style="{StaticResource MainTextBoxStyle}" Width="250" TextChanged="FilterProductTextChanged" HorizontalAlignment="Left" x:Name="FilterAll"/>
+                    <TextBlock Style="{StaticResource SearchTextBlockStyle}" Width="220" Margin="8,5,0,5">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Resources/Images/search.png" Height="20"/>
+                            <TextBlock Text="Поиск"/>
+                        </StackPanel>
+                    </TextBlock>
+                </Grid>
+                <ComboBox Style="{StaticResource MainComboBoxStyle}" SelectionChanged="FilterProductSelectionChanged" Width="200" Margin="5,2.5,0,2.5" x:Name="FilterPrice"/>
+                <ComboBox Style="{StaticResource MainComboBoxStyle}" SelectionChanged="FilterProductSelectionChanged" Width="200" Margin="5,2.5,0,2.5" x:Name="FilterManufactured"/>
+                <TextBlock Width="100" x:Name="FilterCount" Style="{StaticResource MainTextBlockStyle}" Text="30 из 30" VerticalAlignment="Center" Margin="5,2.5,0,2.5"/>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Grid.Row="1" Header="Список товаров" FontFamily="Comic Sans MS">
             <DataGrid AutoGenerateColumns="False" CanUserAddRows="False" ColumnHeaderHeight="0" x:Name="dgrid" ColumnWidth="*" HorizontalContentAlignment="Stretch" VerticalAlignment="Stretch" SelectionMode="Single"
                       CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False" ScrollViewer.CanContentScroll="False">
                 <DataGrid.Columns>
@@ -21,7 +38,7 @@
                                 <Grid>
                                     <StackPanel Orientation="Horizontal">
                                         <Grid Width="120" HorizontalAlignment="Left">
-                                            <Image Margin="5" Source="{Binding ProductPhoto}" x:Name="img"/>
+                                            <Image Margin="5" x:Name="img" Source="{Binding ProductPhoto}"/>
                                             <Image Margin="5" Source="../../../Resources/Images/picture.png">
                                                 <Image.Style>
                                                     <Style TargetType="{x:Type Image}">
