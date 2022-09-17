@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" 
-      xmlns:l="clr-namespace:Flowers.Views.Pages"
+      xmlns:l="clr-namespace:Flowers.Views.Pages.AuthorizationPages"
       d:DesignHeight="460" d:DesignWidth="300"
       WindowTitle="Авторизация">
     <Grid>
@@ -14,30 +14,30 @@
         <StackPanel Grid.Row="1">
             <StackPanel Margin="10,0" VerticalAlignment="Bottom">
                 <TextBlock Text="email:" Style="{StaticResource MainTextBlockStyle}"/>
-                <TextBox Style="{StaticResource MainTextBoxStyle}"/>
+                <TextBox PreviewTextInput="EmailTextInput" x:Name="EmailTBox" Style="{StaticResource MainTextBoxStyle}"/>
             </StackPanel>
             <StackPanel Margin="10,5,10,0" VerticalAlignment="Bottom">
                 <TextBlock Text="Пароль:" Style="{StaticResource MainTextBlockStyle}"/>
-                <PasswordBox Style="{StaticResource RegistrationPasswordBoxStyle}"/>
+                <PasswordBox x:Name="PasswordPBox" Style="{StaticResource RegistrationPasswordBoxStyle}"/>
             </StackPanel>
             <StackPanel Margin="10,5,10,0" VerticalAlignment="Bottom">
                 <TextBlock Text="Повторите пароль:" Style="{StaticResource MainTextBlockStyle}"/>
-                <PasswordBox Style="{StaticResource RegistrationPasswordBoxStyle}"/>
+                <PasswordBox x:Name="RepeatPasswordPBox" Style="{StaticResource RegistrationPasswordBoxStyle}"/>
             </StackPanel>
             <StackPanel Margin="10,5,10,0" VerticalAlignment="Bottom">
                 <TextBlock Text="Имя:" Style="{StaticResource MainTextBlockStyle}"/>
-                <TextBox Style="{StaticResource MainTextBoxStyle}"/>
+                <TextBox x:Name="NameTBox" Style="{StaticResource MainTextBoxStyle}"/>
             </StackPanel>
             <StackPanel Margin="10,5,10,0" VerticalAlignment="Bottom">
                 <TextBlock Text="Фамилия:" Style="{StaticResource MainTextBlockStyle}"/>
-                <TextBox Style="{StaticResource MainTextBoxStyle}"/>
+                <TextBox x:Name="SurnameTBox" Style="{StaticResource MainTextBoxStyle}"/>
             </StackPanel>
             <StackPanel Margin="10,5,10,0" VerticalAlignment="Bottom">
                 <TextBlock Text="Отчество:" Style="{StaticResource MainTextBlockStyle}"/>
-                <TextBox Style="{StaticResource MainTextBoxStyle}"/>
+                <TextBox x:Name="PatronymicTBox" Style="{StaticResource MainTextBoxStyle}"/>
             </StackPanel>
             <UniformGrid Margin="10,25,10,0" VerticalAlignment="Top" Rows="1">
-                <Button Margin="0,0,2.5,0" Style="{StaticResource MainButtonStyle}" Content="Регистрация"/>
+                <Button Margin="0,0,2.5,0" Style="{StaticResource MainButtonStyle}" Content="Регистрация" Click="RegistrationClick"/>
                 <Button Margin="2.5,0,0,0" Style="{StaticResource MainButtonStyle}" Content="Назад" Click="GoBackClick"/>
             </UniformGrid>
         </StackPanel>
