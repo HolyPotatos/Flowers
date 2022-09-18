@@ -73,6 +73,7 @@
     </Compile>
     <Compile Include="Model\Classes\CheckLoginClass.cs" />
     <Compile Include="Model\Classes\CheckUserRoleClass.cs" />
+    <Compile Include="Model\Classes\UserIDClass.cs" />
     <Compile Include="Model\FlowersDataBase.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -133,6 +134,15 @@
     <Compile Include="Views\Pages\GuestPages\MainGuestPage.xaml.cs">
       <DependentUpon>MainGuestPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Pages\UserPages\CartUserPage.xaml.cs">
+      <DependentUpon>CartUserPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\UserPages\MainUserPage.xaml.cs">
+      <DependentUpon>MainUserPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\UserPages\OrderUserPage.xaml.cs">
+      <DependentUpon>OrderUserPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Windows\AuthorizationWindow.xaml.cs">
       <DependentUpon>AuthorizationWindow.xaml</DependentUpon>
     </Compile>
@@ -152,6 +162,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Pages\GuestPages\MainGuestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\UserPages\CartUserPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\UserPages\MainUserPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\UserPages\OrderUserPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -222,13 +244,13 @@
       <DependentUpon>FlowersDataBase.edmx</DependentUpon>
       <LastGenOutput>FlowersDataBase.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\Images\cart.png" />
     <Resource Include="Resources\Images\search.png" />
     <Resource Include="Resources\Images\logout.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Pages\AdminPages\" />
     <Folder Include="Views\Pages\ManagerPages\" />
-    <Folder Include="Views\Pages\UserPages\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
