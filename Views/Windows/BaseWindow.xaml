@@ -12,7 +12,7 @@
         </Grid.RowDefinitions>
         <Border Background="{StaticResource AdditionalBackground}">
             <Grid>
-                <TextBlock Style="{StaticResource MainTextBlockStyle}" Text="Неавторизованный пользователь" VerticalAlignment="Center" Margin="10,0" FontSize="16"/>
+                <TextBlock Style="{StaticResource MainTextBlockStyle}" x:Name="TitleTBox" VerticalAlignment="Center" Margin="10,0" FontSize="16"/>
                 <Button Width="40" Style="{StaticResource LogoutButtonStyle}" ToolTip="Выйти из аккаунта" HorizontalAlignment="Right" Click="LogoutClick" Margin="10,5"/>
             </Grid>
         </Border>
