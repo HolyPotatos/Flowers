@@ -1,12 +1,11 @@
-﻿using Flowers.Model;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Navigation;
 
-namespace Flowers.Views.Pages.UserPages
+namespace Flowers.Views.Pages.ManagerPages
 {
-    public partial class MainUserPage : Page
+    public partial class ProductManagerPage : Page
     {
         private void FilterProduct(string TextFilter, string ManufFilter, string CostFilter)
         {
@@ -73,7 +72,7 @@ namespace Flowers.Views.Pages.UserPages
             }
             FilterCount.Text = ProductDataGrid.Items.Count + " из " + TradeEntities.GetContext().Product.Count();
         }
-        public MainUserPage()
+        public ProductManagerPage()
         {
             InitializeComponent();
             var manufacturers = TradeEntities.GetContext().ProductManufacturer.ToList();
@@ -87,7 +86,6 @@ namespace Flowers.Views.Pages.UserPages
             FilterProduct(FilterAll.Text, FilterManufactured.Text, FilterPrice.Text);
             FilterManufactured.SelectedIndex = 0;
             FilterPrice.SelectedIndex = 0;
-            CartCountTBox.Text = "0";
             FilterCount.Text = TradeEntities.GetContext().Product.Count() + " из " + TradeEntities.GetContext().Product.Count();
             ProductDataGrid.ItemsSource = TradeEntities.GetContext().Product.ToList().OrderBy(n => n.ProductCost);
         }
@@ -105,18 +103,6 @@ namespace Flowers.Views.Pages.UserPages
             }
         }
 
-        private List<Product> CartProducts = new List<Product>();
-        private void CartAddButtonClick(object sender, RoutedEventArgs e)
-        {
-            if (CartProducts.Count(b => b.ProductArticleNumber == (ProductDataGrid.SelectedItem as Product).ProductArticleNumber) > (ProductDataGrid.SelectedItem as Product).ProductQuantityInStock-1)
-            {
-                MessageBox.Show("Товар закончился","Уведомление",MessageBoxButton.OK,MessageBoxImage.Asterisk);
-                return;
-            }
-            CartProducts.Add(ProductDataGrid.SelectedItem as Product);
-            CartCountTBox.Text = CartProducts.Count.ToString();
-        }
-        private void NavigateOrderUserPageClick(object sender, RoutedEventArgs e) => NavigationService.Navigate(new OrderUserPage());
-        private void NavigateCartUserPageClick(object sender, RoutedEventArgs e) => NavigationService.Navigate(new CartUserPage(CartProducts));
+        private void GoBackClick(object sender, RoutedEventArgs e) => NavigationService.GoBack();
     }
 }

@@ -125,6 +125,9 @@
     <Compile Include="Model\User.cs">
       <DependentUpon>FlowersDataBase.tt</DependentUpon>
     </Compile>
+    <Compile Include="Views\Pages\AdminPages\MainAdminPage.xaml.cs">
+      <DependentUpon>MainAdminPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Pages\AuthorizationPages\AuthorizationPage.xaml.cs">
       <DependentUpon>AuthorizationPage.xaml</DependentUpon>
     </Compile>
@@ -133,6 +136,15 @@
     </Compile>
     <Compile Include="Views\Pages\GuestPages\MainGuestPage.xaml.cs">
       <DependentUpon>MainGuestPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\ManagerPages\MainManagerPage.xaml.cs">
+      <DependentUpon>MainManagerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\ManagerPages\OrderManagerPage.xaml.cs">
+      <DependentUpon>OrderManagerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\ManagerPages\ProductManagerPage.xaml.cs">
+      <DependentUpon>ProductManagerPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Pages\UserPages\CartUserPage.xaml.cs">
       <DependentUpon>CartUserPage.xaml</DependentUpon>
@@ -153,6 +165,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\Pages\AdminPages\MainAdminPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Pages\AuthorizationPages\AuthorizationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -162,6 +178,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Pages\GuestPages\MainGuestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\ManagerPages\MainManagerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\ManagerPages\OrderManagerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\ManagerPages\ProductManagerPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -244,13 +272,12 @@
       <DependentUpon>FlowersDataBase.edmx</DependentUpon>
       <LastGenOutput>FlowersDataBase.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\Images\edit.png" />
+    <Resource Include="Resources\Images\delete.png" />
     <Resource Include="Resources\Images\cart.png" />
     <Resource Include="Resources\Images\search.png" />
     <Resource Include="Resources\Images\logout.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Pages\AdminPages\" />
-    <Folder Include="Views\Pages\ManagerPages\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

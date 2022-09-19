@@ -1,8 +1,10 @@
-﻿using System.Linq;
-using System.Windows;
-using Flowers.Model.Classes;
+﻿using Flowers.Model.Classes;
+using Flowers.Views.Pages.AdminPages;
 using Flowers.Views.Pages.GuestPages;
+using Flowers.Views.Pages.ManagerPages;
 using Flowers.Views.Pages.UserPages;
+using System.Linq;
+using System.Windows;
 
 namespace Flowers.Views.Windows
 {
@@ -26,11 +28,11 @@ namespace Flowers.Views.Windows
                     this.Title = "Цветы: гость";
                     break;
                 case 1:
-                    BaseFrame.Content = new MainUserPage();
+                    BaseFrame.Content = new MainAdminPage();
                     this.Title = "Цветы: администратор";
                     break;
                 case 2:
-                    BaseFrame.Content = new MainUserPage();
+                    BaseFrame.Content = new MainManagerPage();
                     this.Title = "Цветы: менеджер";
                     break;
                 case 3:

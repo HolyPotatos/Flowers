@@ -1,9 +1,9 @@
-﻿<Page x:Class="Flowers.Views.Pages.UserPages.MainUserPage"
+﻿<Page x:Class="Flowers.Views.Pages.ManagerPages.ProductManagerPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" 
-      xmlns:l="clr-namespace:Flowers.Views.Pages.UserPages"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d"  
+      xmlns:l="clr-namespace:Flowers.Views.Pages.ManagerPages"
       d:DesignHeight="510" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
@@ -27,8 +27,6 @@
                 <TextBlock Width="70" x:Name="FilterCount" Style="{StaticResource MainTextBlockStyle}" Text="99 из 99" VerticalAlignment="Center" Margin="5,2.5,0,2.5"/>
             </StackPanel>
         </GroupBox>
-        <Button Grid.Row="0" ToolTip="Корзина" Style="{StaticResource CartButtonStyle}" VerticalAlignment="Center" Margin="5,10,5,10" HorizontalAlignment="Right" Click="NavigateCartUserPageClick"/>
-        <TextBlock Text="0" x:Name="CartCountTBox" IsHitTestVisible="False" VerticalAlignment="Bottom" HorizontalAlignment="Right" Padding="3,0,0,0" Height="20" Foreground="{StaticResource HighlightBackground}" FontWeight="Black" Width="23" Margin="0,0,15,25" Style="{StaticResource MainTextBlockStyle}"/>
         <GroupBox Grid.Row="1" Header="Список товаров" FontFamily="Comic Sans MS">
             <DataGrid AutoGenerateColumns="False" CanUserAddRows="False" ColumnHeaderHeight="0" x:Name="ProductDataGrid" ColumnWidth="*" HorizontalContentAlignment="Stretch" VerticalAlignment="Stretch" SelectionMode="Single"
                       CanUserDeleteRows="False" IsReadOnly="True" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False" ScrollViewer.CanContentScroll="False">
@@ -74,7 +72,7 @@
                 </DataGrid.Columns>
             </DataGrid>
         </GroupBox>
-        <Button Grid.Row="2" Margin="10" Content="Добавить в корзину" Width="200" HorizontalAlignment="Right" Style="{StaticResource AddCartButtonStyle}" Click="CartAddButtonClick"/>
-        <Button Grid.Row="2" Margin="10" Content="Мои заказы" Width="200" HorizontalAlignment="Left" Style="{StaticResource MainButtonStyle}" Click="NavigateOrderUserPageClick" />
+        <Button Grid.Row="2" Margin="10" Content="Назад" Width="200" HorizontalAlignment="Left" Style="{StaticResource MainButtonStyle}" Click="GoBackClick" />
     </Grid>
 </Page>
+

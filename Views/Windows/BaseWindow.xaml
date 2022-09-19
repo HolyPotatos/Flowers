@@ -11,10 +11,10 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Border Background="{StaticResource AdditionalBackground}">
-            <Grid>
-                <TextBlock Style="{StaticResource MainTextBlockStyle}" x:Name="TitleTBox" VerticalAlignment="Center" Margin="10,0" FontSize="16"/>
-                <Button Width="40" Style="{StaticResource LogoutButtonStyle}" ToolTip="Выйти из аккаунта" HorizontalAlignment="Right" Click="LogoutClick" Margin="10,5"/>
-            </Grid>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                <TextBlock Style="{StaticResource MainTextBlockStyle}" x:Name="TitleTBox" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10,0"/>
+                <Button Width="40" Style="{StaticResource LogoutButtonStyle}" ToolTip="Выйти из аккаунта" HorizontalAlignment="Left" Margin="0,5" Click="LogoutClick"/>
+            </StackPanel>
         </Border>
         <Frame Grid.Row="1" NavigationUIVisibility="Hidden" x:Name="BaseFrame"/>
     </Grid>
