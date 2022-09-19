@@ -1,5 +1,10 @@
-﻿using System.Linq;
+﻿using Flowers.Model;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
+using Flowers.Views.Windows;
 
 namespace Flowers.Views.Pages.AdminPages
 {
@@ -97,6 +102,55 @@ namespace Flowers.Views.Pages.AdminPages
             {
                 FilterProduct(FilterAll.Text, FilterManufactured.SelectedItem.ToString(), FilterPrice.SelectedItem.ToString());
             }
+        }
+
+        private void DeleteProductClick(object sender, RoutedEventArgs e)
+        {
+            var productID = ((Product)ProductDataGrid.SelectedItem).ProductArticleNumber;
+            if (TradeEntities.GetContext().OrderProduct.Any(b => b.ProductID == productID && b.Order.OrderStatus == 2))
+            {
+                MessageBox.Show("Данный товар есть в заказе", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            if (MessageBox.Show("Вы действительно хотите удалить данный товар?", "Уведомление", MessageBoxButton.YesNo,MessageBoxImage.Asterisk) == MessageBoxResult.No)
+                return;
+            try
+            {
+                var prodID = (Product)ProductDataGrid.SelectedItem;
+                IEnumerable<OrderProduct> OrderProducts =
+                    TradeEntities.GetContext().OrderProduct.Where(b => b.ProductID == prodID.ProductArticleNumber).ToList();
+                TradeEntities.GetContext().OrderProduct.RemoveRange(OrderProducts);
+                TradeEntities.GetContext().Product.Remove(prodID);
+                TradeEntities.GetContext().SaveChanges();
+                MessageBox.Show("Товар успешно удалён", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                FilterProduct(FilterAll.Text, FilterManufactured.Text, FilterPrice.Text);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.ToString(), "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void AddProductClick(object sender, RoutedEventArgs e)
+        {
+            var AEWindow = new AddEditWindow(null,false);
+            AEWindow.ShowDialog();
+            FilterProduct(FilterAll.Text, FilterManufactured.Text, FilterPrice.Text);
+        }
+        private void EditProductClick(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var AEWindow = new AddEditWindow(ProductDataGrid.SelectedItem as Product, true);
+                AEWindow.ShowDialog();
+                FilterProduct(FilterAll.Text, FilterManufactured.Text, FilterPrice.Text);
+            }
+            catch (Exception exception)
+            {
+             //ignored
+            }
+            ;
         }
     }
 }

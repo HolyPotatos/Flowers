@@ -1,0 +1,49 @@
+﻿<Window x:Class="Flowers.Views.Windows.AddEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:l="clr-namespace:Flowers.Views.Windows"
+        Height="650" Width="800" MinHeight="610" MinWidth="800" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width=".5*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".8*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.RowSpan="2" Margin="10,0">
+            <TextBlock Text="Артикул:" Style="{StaticResource MainTextBlockStyle}"/>
+            <TextBox x:Name="ArticleTBox" Text="{Binding ProductArticleNumber}" Style="{StaticResource MainTextBoxStyle}"/>
+            <TextBlock Text="Наименование:" Style="{StaticResource MainTextBlockStyle}"/>
+            <ComboBox x:Name="NameCBox" DisplayMemberPath="ProductName1" Style="{StaticResource MainComboBoxStyle}"/>
+            <TextBlock Text="Единица измерения:" Style="{StaticResource MainTextBlockStyle}"/>
+            <ComboBox x:Name="MeasureCBox" DisplayMemberPath="ProductMeasure1" Style="{StaticResource MainComboBoxStyle}"/>
+            <TextBlock Text="Производитель:" Style="{StaticResource MainTextBlockStyle}"/>
+            <ComboBox x:Name="ManufCBox" DisplayMemberPath="ProductManufacturer1" Style="{StaticResource MainComboBoxStyle}"/>
+            <TextBlock Text="Поставщик:" Style="{StaticResource MainTextBlockStyle}"/>
+            <ComboBox x:Name="SupplierCBox" DisplayMemberPath="ProductSupplier1" Style="{StaticResource MainComboBoxStyle}"/>
+            <TextBlock Text="Категория:" Style="{StaticResource MainTextBlockStyle}"/>
+            <ComboBox x:Name="CategoryCBox" DisplayMemberPath="ProductCategory1" Style="{StaticResource MainComboBoxStyle}"/>
+            <TextBlock Text="Цена:" Style="{StaticResource MainTextBlockStyle}"/>
+            <TextBox x:Name="PriceTBox" Text="{Binding ProductCost}" PreviewTextInput="OnlyNumber" Style="{StaticResource MainTextBoxStyle}"/>
+            <TextBlock Text="Максимальная скидка:" Style="{StaticResource MainTextBlockStyle}"/>
+            <TextBox x:Name="MaxDiscountTBox" Text="{Binding ProductDiscountPossible}" PreviewTextInput="OnlyNumber" Style="{StaticResource MainTextBoxStyle}" MaxLength="2"/>
+            <TextBlock Text="Текущая скидка:" Style="{StaticResource MainTextBlockStyle}"/>
+            <TextBox x:Name="CurrentDiscountTBox" TextChanged="MaxDiscountController" Text="{Binding ProductDiscountAmount}" PreviewTextInput="OnlyNumber" Style="{StaticResource MainTextBoxStyle}" MaxLength="2"/>
+            <TextBlock Text="Количество:" Style="{StaticResource MainTextBlockStyle}"/>
+            <TextBox x:Name="CountTBox" Text="{Binding ProductQuantityInStock}" PreviewTextInput="OnlyNumber" Style="{StaticResource MainTextBoxStyle}"/>
+            <TextBlock Text="Описание:" Style="{StaticResource MainTextBlockStyle}"/>
+            <TextBox x:Name="DescriptionTBox" Text="{Binding ProductDescription}" Style="{StaticResource MainTextBoxStyle}"/>
+        </StackPanel>
+        <StackPanel Margin="10"  Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" >
+            <Button  Content="Выбрать фото" Margin="0,0,0,5" Style="{StaticResource MainButtonStyle}" Click="SetProductPhotoClick"/>
+            <Button  Content="Удалить фото" Margin="0,0,0,5" Style="{StaticResource MainButtonStyle}" Click="DeletePhotoClick"/>
+            <Button Content="Сохранить" Margin="0,0,0,5" Style="{StaticResource MainButtonStyle}" Click="SaveClick"/>
+            <Button Content="Отмена" Style="{StaticResource MainButtonStyle}" Click="CloseClick"/>
+        </StackPanel>
+        <Image Grid.Row="0" Grid.Column="1" Source="{Binding ProductPhoto, UpdateSourceTrigger=PropertyChanged}"></Image>
+    </Grid>
+</Window>

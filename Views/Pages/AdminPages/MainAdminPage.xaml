@@ -69,9 +69,23 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="50">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Height="50" Width="50" Style="{StaticResource EditProductButtonStyle}" Click="EditProductClick"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="50">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Height="50" Width="50" Style="{StaticResource DeleteProductButtonStyle}" Click="DeleteProductClick"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </GroupBox>
-        <Button Grid.Row="2" Margin="10" Content="Добавить в корзину" Width="200" HorizontalAlignment="Right" Style="{StaticResource MainButtonStyle}"/>
+        <Button Grid.Row="2" Margin="10" Content="Добавить новый товар" Width="200" HorizontalAlignment="Right" Click="AddProductClick" Style="{StaticResource MainButtonStyle}"/>
     </Grid>
 </Page>
