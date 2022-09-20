@@ -34,6 +34,7 @@ namespace Flowers.Views.Windows
                 ManufCBox.SelectedItem = product.ProductManufacturer1;
                 MeasureCBox.SelectedItem = product.ProductMeasure1;
                 SupplierCBox.SelectedItem = product.ProductSupplier1;
+                ArticleTBox.IsReadOnly = true;
             }
         }
         private void CloseClick(object sender, RoutedEventArgs e) => Close();
@@ -68,7 +69,7 @@ namespace Flowers.Views.Windows
                 errors.AppendLine("Выберите категорию");
             if (MeasureCBox.SelectedIndex == -1)
                 errors.AppendLine("Выберите единицы измерения");
-            if (TradeEntities.GetContext().Product.Any(b => b.ProductArticleNumber == ArticleTBox.Text))
+            if (TradeEntities.GetContext().Product.Any(b => b.ProductArticleNumber == ArticleTBox.Text) && IsEdit == false)
                 errors.AppendLine("Товар с таким артикулом уже есть");
 
             if (errors.Length > 0)
