@@ -13,7 +13,7 @@ namespace Flowers.Views.Windows
         public BaseWindow(int RoleUser)
         {
             InitializeComponent();
-            if (RoleUser!=0)
+            if (RoleUser != 0)
             {
                 TitleTBox.Text =
                     TradeEntities.GetContext().User.First(b => b.UserID == UserIDClass.UID).UserSurname + " " +

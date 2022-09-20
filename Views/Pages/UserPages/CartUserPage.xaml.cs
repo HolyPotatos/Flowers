@@ -80,7 +80,7 @@ namespace Flowers.Views.Pages.UserPages
         readonly List<Product> CartProducts;
 
         private void SetActualPrice() => PriceTBlock.Text = "Итоговая цена " + ((int)ProductDataGrid.Items.Cast<object>().Sum(b => ((Product)b).ProductCost)).ToString() + " руб.";
-        
+
         public CartUserPage(List<Product> CP)
         {
             InitializeComponent();
@@ -162,7 +162,7 @@ namespace Flowers.Views.Pages.UserPages
                     }
                     ProductDataGrid.ItemsSource = null;
                     SetActualPrice();
-                    MessageBox.Show("Заказ успешно оформлен!\nТовар придёт через 5 дней.","Уведомление",MessageBoxButton.OK,MessageBoxImage.Asterisk);
+                    MessageBox.Show("Заказ успешно оформлен!\nТовар придёт через 5 дней.", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Asterisk);
                 }
                 catch (Exception exception)
                 {
