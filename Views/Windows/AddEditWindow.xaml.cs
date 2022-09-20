@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity.Core.Metadata.Edm;
+﻿using Flowers.Model;
+using System;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Flowers.Model;
 
 namespace Flowers.Views.Windows
 {
@@ -75,6 +68,8 @@ namespace Flowers.Views.Windows
                 errors.AppendLine("Выберите категорию");
             if (MeasureCBox.SelectedIndex == -1)
                 errors.AppendLine("Выберите единицы измерения");
+            if (TradeEntities.GetContext().Product.Any(b => b.ProductArticleNumber == ArticleTBox.Text))
+                errors.AppendLine("Товар с таким артикулом уже есть");
 
             if (errors.Length > 0)
             {
@@ -136,24 +131,31 @@ namespace Flowers.Views.Windows
         private void DeletePhotoClick(object sender, RoutedEventArgs e)
         {
             product.ProductPhoto = null;
-            MessageBox.Show("Фотография товара удалена","Уведомление",MessageBoxButton.OK,MessageBoxImage.Asterisk);
+            PhotoImage.Source = null;
+            MessageBox.Show("Фотография товара удалена", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Asterisk);
         }
         byte[] ImageData = null;
         private void SetProductPhotoClick(object sender, RoutedEventArgs e)
         {
-            
+
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
             dlg.DefaultExt = ".png";
             dlg.Filter = "PNG Файлы (*.png)|*.png|JPEG Файлы (*.jpg)|*.jpg|BMP Файлы (*.bmp)|*.bmp";
             Nullable<bool> result = dlg.ShowDialog();
             if (result == true)
             {
-                string filename = dlg.FileName;
+                var filename = dlg.FileName;
 
                 using (FileStream fs = new FileStream(filename, FileMode.Open))
                 {
                     ImageData = new byte[fs.Length];
                     fs.Read(ImageData, 0, ImageData.Length);
+                    var ms = new MemoryStream(ImageData);
+                    var currentImage = new BitmapImage();
+                    currentImage.BeginInit();
+                    currentImage.StreamSource = ms;
+                    currentImage.EndInit();
+                    PhotoImage.Source = currentImage;
                 }
                 product.ProductPhoto = ImageData;
             }

@@ -17,8 +17,8 @@ namespace Flowers.Views.Pages.AuthorizationPages
         private void LoginButtonClick(object sender, RoutedEventArgs e)
         {
             var RoleUser = CheckUserRoleClass.CheckUserRole(LoginTBox.Text, PasswordPBox.Password);
-            if (RoleUser == 0) 
-                MessageBox.Show("Такого аккаунта нет!","Ошибка",MessageBoxButton.OK,MessageBoxImage.Error);
+            if (RoleUser == 0)
+                MessageBox.Show("Такого аккаунта нет!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             else
             {
                 var window = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
@@ -26,7 +26,7 @@ namespace Flowers.Views.Pages.AuthorizationPages
                 BaseWindow.Show();
                 window.Close();
             }
-            
+
         }
 
         private void RegistrationButtonClick(object sender, RoutedEventArgs e)
