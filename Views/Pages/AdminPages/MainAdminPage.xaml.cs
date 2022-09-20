@@ -1,10 +1,10 @@
 ﻿using Flowers.Model;
+using Flowers.Views.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using Flowers.Views.Windows;
 
 namespace Flowers.Views.Pages.AdminPages
 {
@@ -146,7 +146,7 @@ namespace Flowers.Views.Pages.AdminPages
                 AEWindow.ShowDialog();
                 FilterProduct(FilterAll.Text, FilterManufactured.Text, FilterPrice.Text);
             }
-            catch (Exception exception)
+            catch (Exception)
             {
                 //ignored
             }

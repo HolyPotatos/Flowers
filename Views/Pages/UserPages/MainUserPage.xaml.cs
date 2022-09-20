@@ -108,9 +108,9 @@ namespace Flowers.Views.Pages.UserPages
         private List<Product> CartProducts = new List<Product>();
         private void CartAddButtonClick(object sender, RoutedEventArgs e)
         {
-            if (CartProducts.Count(b => b.ProductArticleNumber == (ProductDataGrid.SelectedItem as Product).ProductArticleNumber) > (ProductDataGrid.SelectedItem as Product).ProductQuantityInStock-1)
+            if (CartProducts.Count(b => b.ProductArticleNumber == (ProductDataGrid.SelectedItem as Product).ProductArticleNumber) > (ProductDataGrid.SelectedItem as Product).ProductQuantityInStock - 1)
             {
-                MessageBox.Show("Товар закончился","Уведомление",MessageBoxButton.OK,MessageBoxImage.Asterisk);
+                MessageBox.Show("Товар закончился", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Asterisk);
                 return;
             }
             CartProducts.Add(ProductDataGrid.SelectedItem as Product);

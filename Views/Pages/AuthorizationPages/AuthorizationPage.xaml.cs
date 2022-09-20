@@ -1,6 +1,7 @@
 ﻿using Flowers.Model.Classes;
 using Flowers.Views.Windows;
 using System.Linq;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -16,6 +17,16 @@ namespace Flowers.Views.Pages.AuthorizationPages
         private void PasswordPBoxPasswordChanged(object sender, RoutedEventArgs e) => PasswordPBox.SnapsToDevicePixels = PasswordPBox.Password.Length != 0 ? true : false;
         private void LoginButtonClick(object sender, RoutedEventArgs e)
         {
+            var errors = new StringBuilder();
+            if (string.IsNullOrEmpty(LoginTBox.Text))
+                errors.AppendLine("Введите логин");
+            if (string.IsNullOrEmpty(PasswordPBox.Password))
+                errors.AppendLine("Введите пароль");
+            if (errors.Length != 0)
+            {
+                MessageBox.Show(errors.ToString(), "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             var RoleUser = CheckUserRoleClass.CheckUserRole(LoginTBox.Text, PasswordPBox.Password);
             if (RoleUser == 0)
                 MessageBox.Show("Такого аккаунта нет!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
