@@ -33,9 +33,9 @@ namespace Flowers.Views.Pages.GuestPages
                     }
                     else
                     {
-                        ProductDataGrid.ItemsSource = TradeEntities.GetContext().Product.Where(b => b.ProductManufacturer1.ProductManufacturer1 == ManufFilter && 
-                            (b.ProductName1.ProductName1.Contains(TextFilter) || 
-                            b.ProductDescription.Contains(TextFilter) || 
+                        ProductDataGrid.ItemsSource = TradeEntities.GetContext().Product.Where(b => b.ProductManufacturer1.ProductManufacturer1 == ManufFilter &&
+                            (b.ProductName1.ProductName1.Contains(TextFilter) ||
+                            b.ProductDescription.Contains(TextFilter) ||
                             b.ProductManufacturer1.ProductManufacturer1.Contains(TextFilter))).ToList().OrderBy(b => b.ProductCost);
                     }
                 }

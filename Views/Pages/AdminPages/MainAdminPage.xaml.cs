@@ -113,7 +113,7 @@ namespace Flowers.Views.Pages.AdminPages
                 return;
             }
 
-            if (MessageBox.Show("Вы действительно хотите удалить данный товар?", "Уведомление", MessageBoxButton.YesNo,MessageBoxImage.Asterisk) == MessageBoxResult.No)
+            if (MessageBox.Show("Вы действительно хотите удалить данный товар?", "Уведомление", MessageBoxButton.YesNo, MessageBoxImage.Asterisk) == MessageBoxResult.No)
                 return;
             try
             {
@@ -134,7 +134,7 @@ namespace Flowers.Views.Pages.AdminPages
 
         private void AddProductClick(object sender, RoutedEventArgs e)
         {
-            var AEWindow = new AddEditWindow(null,false);
+            var AEWindow = new AddEditWindow(null, false);
             AEWindow.ShowDialog();
             FilterProduct(FilterAll.Text, FilterManufactured.Text, FilterPrice.Text);
         }
@@ -148,7 +148,7 @@ namespace Flowers.Views.Pages.AdminPages
             }
             catch (Exception exception)
             {
-             //ignored
+                //ignored
             }
             ;
         }

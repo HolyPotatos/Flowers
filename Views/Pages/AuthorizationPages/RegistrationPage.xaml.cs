@@ -32,7 +32,7 @@ namespace Flowers.Views.Pages.AuthorizationPages
             var errors = new StringBuilder();
             if (string.IsNullOrEmpty(EmailTBox.Text)) errors.AppendLine("Введите адрес эл. почты");
             if (TradeEntities.GetContext().User.Any(b => b.UserLogin == EmailTBox.Text)) errors.AppendLine("Такой адрес эл. почты уже зарегистрирован");
-            if (EmailTBox.Text[0] == '.' || EmailTBox.Text[EmailTBox.Text.Length-1] == '.') errors.AppendLine("Некорректный адрес эл. почты");
+            if (EmailTBox.Text[0] == '.' || EmailTBox.Text[EmailTBox.Text.Length - 1] == '.') errors.AppendLine("Некорректный адрес эл. почты");
             if (string.IsNullOrEmpty(PasswordPBox.Password)) errors.AppendLine("Введите пароль");
             if (string.IsNullOrEmpty(RepeatPasswordPBox.Password)) errors.AppendLine("Повторите пароль");
             if (string.IsNullOrEmpty(NameTBox.Text)) errors.AppendLine("Введите имя");
@@ -63,7 +63,7 @@ namespace Flowers.Views.Pages.AuthorizationPages
             {
                 MessageBox.Show(exception.ToString(), "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            
+
         }
     }
 }

@@ -44,6 +44,6 @@
             <Button Content="Сохранить" Margin="0,0,0,5" Style="{StaticResource MainButtonStyle}" Click="SaveClick"/>
             <Button Content="Отмена" Style="{StaticResource MainButtonStyle}" Click="CloseClick"/>
         </StackPanel>
-        <Image Grid.Row="0" Grid.Column="1" Source="{Binding ProductPhoto, UpdateSourceTrigger=PropertyChanged}"></Image>
+        <Image Grid.Row="0" Grid.Column="1" Source="{Binding ProductPhoto, UpdateSourceTrigger=PropertyChanged}" x:Name="PhotoImage"/>
     </Grid>
 </Window>
