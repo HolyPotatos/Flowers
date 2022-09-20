@@ -34,6 +34,7 @@ namespace Flowers.Views.Windows
                 ManufCBox.SelectedItem = product.ProductManufacturer1;
                 MeasureCBox.SelectedItem = product.ProductMeasure1;
                 SupplierCBox.SelectedItem = product.ProductSupplier1;
+                ArticleTBox.IsReadOnly = true;
             }
         }
         private void CloseClick(object sender, RoutedEventArgs e) => Close();
